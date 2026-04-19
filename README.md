@@ -84,54 +84,18 @@ composeApp/src/commonMain/kotlin/org/example/project/
 
 ---
 
-## 🗺️ Arsitektur
-
-```
-┌─────────────────────────────────────┐
-│           UI Layer (Screens)         │
-│  NewsListScreen | DetailScreen | ... │
-└──────────────┬──────────────────────┘
-               │ collectAsState()
-┌──────────────▼──────────────────────┐
-│         ViewModel Layer              │
-│          NewsViewModel               │
-│  StateFlow: uiState, isRefreshing,  │
-│  searchQuery, bookmarkedIds          │
-└──────────────┬──────────────────────┘
-               │ suspend fun
-┌──────────────▼──────────────────────┐
-│        Repository Layer              │
-│         NewsRepository               │
-│  • Wrap Result<T>                   │
-│  • Filter artikel kosong/removed    │
-│  • Map error code → pesan friendly  │
-└──────────────┬──────────────────────┘
-               │ HTTP Request
-┌──────────────▼──────────────────────┐
-│    NewsApi + HttpClientFactory       │
-│  • Ktor Client + Header X-Api-Key   │
-│  • Timeout 15s / ContentNegotiation │
-└──────────────┬──────────────────────┘
-               │ JSON Parsing (@Serializable)
-┌──────────────▼──────────────────────┐
-│   Article, NewsResponse, UiState    │
-└─────────────────────────────────────┘
-```
-
----
-
 ## 📱 Screenshots
 
 | Screen | Deskripsi |
 |--------|-----------|
-| <details><summary><code>screenshot_loading.png</code></summary><br><img width="300" alt="Loading State" src="screenshots/loading.png" /></details> | Loading state — CircularProgressIndicator saat fetch data |
-| <details><summary><code>screenshot_success.png</code></summary><br><img width="300" alt="Success State" src="screenshots/success.png" /></details> | Success state — LazyColumn daftar berita dengan gambar |
-| <details><summary><code>screenshot_error.png</code></summary><br><img width="300" alt="Error State" src="screenshots/error.png" /></details> | Error state — pesan error + tombol Retry (airplane mode) |
-| <details><summary><code>screenshot_detail.png</code></summary><br><img width="300" alt="Detail" src="screenshots/detail.png" /></details> | Detail artikel — gambar, author, konten, URL sumber |
-| <details><summary><code>screenshot_search.png</code></summary><br><img width="300" alt="Search" src="screenshots/search.png" /></details> | Search — debounced search ke NewsAPI /everything |
-| <details><summary><code>screenshot_kategori.png</code></summary><br><img width="300" alt="Kategori" src="screenshots/kategori.png" /></details> | Filter kategori — 7 kategori berita |
-| <details><summary><code>screenshot_bookmark.png</code></summary><br><img width="300" alt="Bookmark" src="screenshots/bookmark.png" /></details> | Tab Tersimpan — artikel yang di-bookmark |
-| <details><summary><code>screenshot_darkmode.png</code></summary><br><img width="300" alt="Dark Mode" src="screenshots/darkmode.png" /></details> | Dark mode aktif |
+| <details><summary><code>screenshot_loading.png</code></summary><br><img width="300" height="600" alt="Image" src="https://github.com/user-attachments/assets/825ce48a-f099-4f22-821d-311b9f1cadc4" /></details> | Loading state — CircularProgressIndicator saat fetch data |
+| <details><summary><code>screenshot_success.png</code></summary><br><img width="300" height="600" alt="Image" src="https://github.com/user-attachments/assets/26b935df-3d24-4b31-a0c9-9d93068593e6" /></details> | Success state — LazyColumn daftar berita dengan gambar |
+| <details><summary><code>screenshot_error.png</code></summary><br><img width="300" height="600" alt="Image" src="https://github.com/user-attachments/assets/091bad0a-fad2-4294-954b-6e0d000e5639" /></details> | Error state — pesan error + tombol Retry (airplane mode) |
+| <details><summary><code>screenshot_detail.png</code></summary><br><img width="300" height="600" alt="Image" src="https://github.com/user-attachments/assets/1c6456fb-7efa-4bc8-a242-74e687496f9e" /></details> | Detail artikel — gambar, author, konten, URL sumber |
+| <details><summary><code>screenshot_search.png</code></summary><br><img width="300" height="600" alt="Image" src="https://github.com/user-attachments/assets/e4bac827-ca88-4b3d-a4f1-40e369312711" /></details> | Search — debounced search ke NewsAPI /everything |
+| <details><summary><code>screenshot_kategori.png</code></summary><br><img width="300" height="600" alt="Image" src="https://github.com/user-attachments/assets/1ca80a00-3f2e-4311-8219-167cd6603760" /></details> | Filter kategori — 7 kategori berita |
+| <details><summary><code>screenshot_bookmark.png</code></summary><br><img width="300" height="600" alt="Image" src="https://github.com/user-attachments/assets/38a1a58e-7b12-4433-bda0-c0d1d73061ba" /></details> | Tab Tersimpan — artikel yang di-bookmark |
+| <details><summary><code>screenshot_darkmode.png</code></summary><br><img width="300" height="600" alt="Image" src="https://github.com/user-attachments/assets/be93e8c0-872a-4720-aaa4-1359cf1c59ad" /></details> | Dark mode aktif |
 
 ---
 
@@ -139,7 +103,7 @@ composeApp/src/commonMain/kotlin/org/example/project/
 
 | Fitur | Preview | Keterangan |
 | :--- | :--- | :--- |
-| **Video Demo** | [▶️ Tonton Video Demo (Google Drive)](https://drive.google.com/your-link-here) | `demo_week6.mp4` (≤ 30 detik) |
+| **Video Demo** | [▶️ Tonton Video Demo (Google Drive)](https://drive.google.com/file/d/10xxPqfbV_sQ9rkMa010h1SELDvyAWfgz/view?usp=drivesdk) | `demo_week6.mp4` (≤ 30 detik) |
 
 > Video menunjukkan: Loading → Success → Error (airplane mode) → Retry → Search → Filter Kategori → Bookmark
 
@@ -212,7 +176,7 @@ implementation(libs.ktor.client.android)
 
 ---
 
-## 📊 Rubrik Penilaian
+## 📊 Implementasi dari Komponen-Komponen
 
 | Komponen | Kriteria | Implementasi |
 |---|---|---|
